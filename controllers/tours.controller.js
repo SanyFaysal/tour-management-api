@@ -17,6 +17,9 @@ exports.getTours = async (req, res) => {
       const fields = filters.fields.split(',').join(' ');
       queries.fields = fields;
     }
+    if (filters.sort) {
+      queries.sort = filters.sort;
+    }
     const { page = 1, limit = 3 } = filters;
     const skip = (parseInt(page) - 1) * parseInt(limit);
     queries.skip = skip;
